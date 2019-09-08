@@ -372,7 +372,7 @@ class Featurizer():
         else:
             return 0
 
-    def average_word_length(self, string_i):
+    def avg_word_length(self, string_i):
         words = string_i.split()
         word_lengths = [len(word) for word in words]
         if len(word_lengths) > 0:
