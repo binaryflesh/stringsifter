@@ -8,6 +8,7 @@ import numpy
 import base64
 import joblib
 import string
+import typing
 import binascii
 import fasttext
 import unicodedata
@@ -15,6 +16,9 @@ import collections
 import sklearn.pipeline
 import sklearn.feature_extraction.text
 from sklearn.base import BaseEstimator, TransformerMixin
+
+if typing.TYPE_CHECKING:
+    from numpy import Array
 
 
 if __package__ is None or __package__ == "":
@@ -40,13 +44,13 @@ class Mapper(BaseEstimator, TransformerMixin):
     def __init__(self, func):
         self.func = func
 
-    def fit(self, X, y=None):
+    def fit(self, X, y=None) -> Mapper:
         return self
 
-    def transform(self, X):
+    def transform(self, X) -> Array:
         return numpy.array(list(map(self.func, X))).reshape(-1, 1)
 
-    def get_feature_names(self):
+    def get_feature_names(self) -> str:
         return '0'
 
 
@@ -57,13 +61,14 @@ class Featurizer():
                         ['bit', 'dev', 'onion']
         self.tldstr = '|'.join(dnsroot_cache)
 
-        self.mac_only_regex = \
+        self.mac_only_regex = (
             re.compile(r"""
                 ^
                 (?:[A-Fa-f0-9]{2}:){5}
                 [A-Fa-f0-9]{2}
                 $
-                """, re.VERBOSE)
+                """, re.VERBOSE))
+            )
 
         fqdn_base = r'(([a-z0-9_-]{1,63}\.){1,10}(%s))' % self.tldstr
         fqdn_str = fqdn_base + r'(?:\W|$)'
