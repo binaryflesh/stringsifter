@@ -263,6 +263,7 @@ class Featurizer():
             entropy_rate -= i * math.log(i, base)
 
         below_thresh_lower = entropy_rate <= thresh_lower
+
         above_thresh_upper = entropy_rate >= thresh_upper
         if below_thresh_lower or above_thresh_upper:
             return 1
@@ -285,7 +286,7 @@ class Featurizer():
             kl += p * math.log2(p / q)
         return 1 if int(kl <= thresh_upper) else -1
 
-    def average_scrabble_score(self, string_i, thresh_lower=1.,
+    def avg_scrabble_score(self, string_i, thresh_lower=1.,
                                thresh_upper=3.51):
         lowered_letters = [char for char in string_i.lower() if char.isalpha()]
         if len(lowered_letters) > 0:
