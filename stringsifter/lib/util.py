@@ -4,9 +4,14 @@ import io
 import os
 import sys
 import contextlib
+import typing
+
+if typing.TYPE_CHECKING:
+    from os.path import Path
+    from typing import Coroutine, Union
 
 
-def package_base():
+def package_base() -> Path:
     """
     return package base folder (one level up from here)
     """
@@ -15,7 +20,7 @@ def package_base():
 
 
 @contextlib.contextmanager
-def redirect_stderr():
+def redirect_stderr() -> Union[Coroutine, sys.stderr]:
     _stderr = sys.stderr
     sys.stderr = io.StringIO()
     yield
