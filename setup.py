@@ -12,9 +12,11 @@ if not here:
     here = os.path.curdir
 
 # Text describing the module
-long_description = 'stringsifter is a machine learning-based tool ' + \
-                   'that automatically ranks the output of the ' + \
-                   '`strings` program for binary triage analysis.'
+long_description = (
+    'stringsifter is a machine learning-based tool ',
+    'that automatically ranks the output of the ',
+    '`strings` program for binary triage analysis.'
+)
 
 # requirements.  we use requirements.txt for the Docker build,
 # so import it here
