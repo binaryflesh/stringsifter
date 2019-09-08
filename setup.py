@@ -44,8 +44,10 @@ metadata = {
     'package_data': _package_data,
     'scripts': scripts,
     'entry_points': {
-        'console_scripts': ['rank_strings=stringsifter.rank_strings:argmain',
-                            'flarestrings=stringsifter.flarestrings:main']
+        'console_scripts': [
+            'rank_strings=stringsifter.rank_strings:argmain',
+            'flarestrings=stringsifter.flarestrings:main',
+        ],
     },
     'install_requires': requirements,
     'python_requires': '>=3.6',
