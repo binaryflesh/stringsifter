@@ -54,9 +54,11 @@ metadata = {
     # Metadata
     'name': 'stringsifter',
     'version': _version,
-    'description': 'stringsifter is a machine learning-based tool that ' + \
-                   'automatically ranks the output of the `strings` ' + \
-                   'program for binary triage analysis.',
+    'description': (
+        'stringsifter is a machine learning-based tool that ',
+        'automatically ranks the output of the `strings` ',
+        'program for binary triage analysis.'
+    ),
     'long_description': long_description,
     'url': 'https://github.com/fireeye/stringsifter',
     'download_url': 'https://github.com/fireeye/stringsifter',
